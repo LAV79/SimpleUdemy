@@ -1,0 +1,47 @@
+<%= form_with(model: course, local: true) do |form| %>
+  <% if course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.text_field :image, id: :course_image, placeholder: "Изображение", class: "form-control" %>
+  </div>
+
+<!--
+  <div class="field">
+     <%= form.label :video %> Добавим из bootstap-->    
+  <div class="form-group">
+    <%= form.text_field :video, id: :course_video, placeholder: "Видео", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :title, id: :course_title, placeholder: "Название", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.number_field :star, value: course.star_number, min: "1", max: "5", id: :course_star, placeholder: "Рейтинг", class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.text_area :description, id: :course_description, placeholder: "Описание", length: "800", class: "form-control" %>
+  </div>
+
+  <div class="form-check">
+    <%= form.check_box :public, id: :public, class: "form-check-input" %>
+    <label for="public" class="form-check-label">Опубликовать?</label>
+  </div>
+  <br>
+<!--   <div class="actions">
+    <%= form.submit %>
+  </div> --> 
+  <button type = "submit" class="btn-primary">Сохранить</button>
+  <%= link_to "Открыть все курсы", courses_path, class: "btn btn-secondary" %> 
+<% end %>

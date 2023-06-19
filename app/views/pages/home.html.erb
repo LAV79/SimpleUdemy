@@ -1,0 +1,25 @@
+<br>
+
+<div class="row">
+	<% @courses.each do |course| %>
+		<div class="col-md-3">
+			<div class="card">
+
+				<%= link_to course do %>
+					<%= image_tag course.cover, class: "card-img-top" %>
+				<% end %>
+				<div class="card-body">
+					<h5 class="card-title">course.title</h5>
+		      <% (1..5).each do |v| %>
+		        <% if v > course.star %>
+		          <i class="fa-regular fa-star"></i>
+		        <% else %>
+		          <i class="fa-solid fa-star"></i>
+		        <% end %>
+		      <% end %>
+					<!-- <p class="card-text"> <%= course.description %> </p> -->
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
